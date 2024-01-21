@@ -12,6 +12,9 @@ const config: Config = {
         primary: 'rgb(var(--primary-color))',
         secondary: 'rgb(var(--secondary-color))',
       },
+      width: {
+        '120': '30rem',
+      },
     },
   },
   plugins: [],
