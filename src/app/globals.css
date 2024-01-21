@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 226, 165, 40;
-  --background-rgb: 26, 11, 12;
+  --primary-color: 226, 165, 40;
+  --secondary-color: 26, 11, 12;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 226, 165, 40;
-    --background-rgb: 26, 11, 12;
+    --primary: 26, 11, 12;
+    --secondary: 226, 165, 40;
   }
-}
+} */
 
 /*
   Josh's Custom CSS Reset
@@ -28,8 +28,8 @@
 }
 body {
   line-height: 1.5;
-  color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-rgb));
+  color: rgb(var(--primary-color));
+  background-color: rgb(var(--secondary-color));
   -webkit-font-smoothing: antialiased;
 }
 img,
@@ -55,7 +55,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-#root,
+/* #root,
 #__next {
   isolation: isolate;
-}
+} */
