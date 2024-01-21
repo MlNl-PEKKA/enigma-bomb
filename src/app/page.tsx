@@ -2,10 +2,9 @@ import LampBoard from './components/lampBoard'
 
 const Home = () => {
   return (
-    <div className="">
-      <div>Hello world </div>
+    <main>
       <LampBoard />
-    </div>
+    </main>
   )
 }
 
