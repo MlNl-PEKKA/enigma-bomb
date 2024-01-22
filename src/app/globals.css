@@ -5,6 +5,7 @@
 :root {
   --primary-color: 226, 165, 40;
   --secondary-color: 26, 11, 12;
+  --tertiary-color: 255, 58, 50;
 }
 
 /* @media (prefers-color-scheme: dark) {

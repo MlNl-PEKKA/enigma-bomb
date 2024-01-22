@@ -1,4 +1,4 @@
-import LampBoard from './components/lampBoard'
+import LampBoard from './components/keyBoard'
 
 const Home = () => {
   return (
