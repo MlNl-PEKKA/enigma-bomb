@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Enigma Machine Replica Project
 
 Welcome to the Enigma Machine Replica Project! This project aims to replicate the functionality of the historic Enigma machine using modern web technologies such as Next.js, TypeScript, Tailwind CSS, and Zustand. The project supports both server-side rendering (SSR) and client-side rendering (CSR) for a seamless user experience.
