@@ -1,13 +1,26 @@
 import { useCallback, useEffect, useState } from 'react'
+import { setText, useBoundStore } from '../stores'
 
 const useKeyPress = () => {
-  const [key, setKey] = useState<string | null>(null)
+  const [keyPress, setKeyPress] = useState('')
+  const text = useBoundStore((state) => state.text)
+  const keyValidation = useCallback((key: string) => {
+    return /^[a-z\s]$/i.test(key)
+  }, [])
   const listenerUpFunction = useCallback(() => {
-    setKey(null)
+    setKeyPress('')
   }, [])
-  const listenerDownFunction = useCallback((e: KeyboardEvent) => {
-    setKey(e.key.toLowerCase())
-  }, [])
+  const listenerDownFunction = useCallback(
+    (e: KeyboardEvent) => {
+      if (keyValidation(e.key)) setText(`${text}${e.key.toLowerCase()}`)
+      else if (e.key === 'Backspace')
+        setText(
+          `${text?.length === 0 ? text : text?.slice(0, text.length - 1)}`
+        )
+      setKeyPress(e.key.toLowerCase())
+    },
+    [keyValidation, text]
+  )
   useEffect(() => {
     document.addEventListener('keydown', listenerDownFunction)
     return () => {
@@ -22,7 +35,7 @@ const useKeyPress = () => {
     }
   }, [listenerUpFunction])
 
-  return key
+  return keyPress
 }
 
 export default useKeyPress
