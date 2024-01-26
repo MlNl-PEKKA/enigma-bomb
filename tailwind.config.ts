@@ -20,6 +20,13 @@ const config: Config = {
         tablet: '640px',
         desktop: '1024px',
       },
+      flexGrow: {
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+      },
     },
   },
   plugins: [],
