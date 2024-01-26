@@ -1,9 +1,10 @@
-'use client'
 import useKeyPress from '@/app/hooks/keyDetect'
 import { TLetters } from './utils'
 
-export const Lamp: React.FC<{ letter: TLetters }> = ({ letter }) => {
-  const keyPress = useKeyPress(letter)
+export const Lamp: React.FC<{ letter: TLetters; keyPress: boolean }> = ({
+  letter,
+  keyPress,
+}) => {
   return (
     <div
       className={`flex flex-col justify-center items-center border-2
@@ -19,8 +20,7 @@ export const Lamp: React.FC<{ letter: TLetters }> = ({ letter }) => {
   )
 }
 
-export const LampSpace = () => {
-  const keyPress = useKeyPress(' ')
+export const LampSpace: React.FC<{ keyPress: boolean }> = ({ keyPress }) => {
   return (
     <div
       className={`flex flex-col justify-end items-center 

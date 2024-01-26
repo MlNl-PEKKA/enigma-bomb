@@ -1,23 +1,17 @@
 import { useCallback, useEffect, useState } from 'react'
 
-const useKeyPress = (key: string) => {
-  const [keyPress, setKeyPress] = useState(false)
-  const listenerUpFunction = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() === key.toLowerCase()) setKeyPress(false)
-    },
-    [key]
-  )
-  const listenerDownFunction = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() === key.toLowerCase()) setKeyPress(true)
-    },
-    [key]
-  )
+const useKeyPress = () => {
+  const [key, setKey] = useState<string | null>(null)
+  const listenerUpFunction = useCallback(() => {
+    setKey(null)
+  }, [])
+  const listenerDownFunction = useCallback((e: KeyboardEvent) => {
+    setKey(e.key.toLowerCase())
+  }, [])
   useEffect(() => {
-    document.addEventListener('keydown', listenerDownFunction)
+    document.addEventListener('keypress', listenerDownFunction)
     return () => {
-      document.removeEventListener('keydown', listenerDownFunction)
+      document.removeEventListener('keypress', listenerDownFunction)
     }
   }, [listenerDownFunction])
 
@@ -28,7 +22,7 @@ const useKeyPress = (key: string) => {
     }
   }, [listenerUpFunction])
 
-  return keyPress
+  return key
 }
 
 export default useKeyPress
