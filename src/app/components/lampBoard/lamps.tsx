@@ -1,15 +1,23 @@
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { TLetters } from './utils'
 
 const Lamp: React.FC<{ letter: TLetters; keyPress: boolean }> = ({
   letter,
   keyPress,
 }) => {
+  const [active, setActive] = useState(keyPress)
+  useEffect(() => {
+    if (keyPress) setActive(true)
+    else {
+      const timeout = setTimeout(() => setActive(false), 50)
+      return () => clearTimeout(timeout)
+    }
+  }, [keyPress])
   return (
     <div
       className={`flex flex-col justify-center items-center border-2
       border-primary select-none transition-colors cursor-pointer
-      ${keyPress ? 'text-secondary bg-primary' : 'text-primary bg-secondary'}
+      ${active ? 'text-secondary bg-primary' : 'text-primary bg-secondary'}
       w-8 h-8 text-sm rounded-full
       tablet:w-12 tablet:h-12 tablet:text-2xl 
       desktop:w-14 desktop:h-14 

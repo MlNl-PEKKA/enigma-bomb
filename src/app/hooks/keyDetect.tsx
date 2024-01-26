@@ -9,9 +9,9 @@ const useKeyPress = () => {
     setKey(e.key.toLowerCase())
   }, [])
   useEffect(() => {
-    document.addEventListener('keypress', listenerDownFunction)
+    document.addEventListener('keydown', listenerDownFunction)
     return () => {
-      document.removeEventListener('keypress', listenerDownFunction)
+      document.removeEventListener('keydown', listenerDownFunction)
     }
   }, [listenerDownFunction])
 
