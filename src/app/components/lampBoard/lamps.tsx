@@ -1,7 +1,7 @@
-import useKeyPress from '@/app/hooks/keyDetect'
+import { memo } from 'react'
 import { TLetters } from './utils'
 
-export const Lamp: React.FC<{ letter: TLetters; keyPress: boolean }> = ({
+const Lamp: React.FC<{ letter: TLetters; keyPress: boolean }> = ({
   letter,
   keyPress,
 }) => {
@@ -19,6 +19,8 @@ export const Lamp: React.FC<{ letter: TLetters; keyPress: boolean }> = ({
     </div>
   )
 }
+
+export const MemoLamp = memo(Lamp)
 
 export const LampSpace: React.FC<{ keyPress: boolean }> = ({ keyPress }) => {
   return (

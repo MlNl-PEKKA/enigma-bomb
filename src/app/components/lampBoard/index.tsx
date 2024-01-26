@@ -1,7 +1,8 @@
 'use client'
 import useKeyPress from '@/app/hooks/keyDetect'
-import { Lamp, LampSpace } from './lamps'
+import { MemoLamp, LampSpace } from './lamps'
 import { TLetters, keys } from './utils'
+import { memo } from 'react'
 
 const LampBoard = () => {
   const keyPress = useKeyPress()
@@ -22,7 +23,7 @@ const LampRows: React.FC<{ row: TLetters[]; keyPress: string | null }> = ({
   return (
     <div className="flex flex-row gap-1 tablet:gap-2">
       {row.map((letter, i) => (
-        <Lamp key={i} letter={letter} keyPress={letter === keyPress} />
+        <MemoLamp key={i} letter={letter} keyPress={letter === keyPress} />
       ))}
     </div>
   )
