@@ -1,4 +1,5 @@
 import LampBoard from '../lampBoard'
+import OutputBoard from '../outputBoard'
 
 const Frame = () => {
   return (
@@ -63,7 +64,7 @@ const RotorFrame = () => {
 const OutputFrame = () => {
   return (
     <section className="flex items-center w-2/4 justify-center border-2 border-primary">
-      Output
+      <OutputBoard />
     </section>
   )
 }
@@ -78,7 +79,7 @@ const PlugBoardFrame = () => {
 
 const LampBoardFrame = () => {
   return (
-    <section className="flex flex-row w-2/4 items-center justify-center border-2 border-primary">
+    <section className="flex flex-col w-2/4 items-center justify-center border-2 border-primary flex-wrap text-center gap-10">
       <LampBoard />
     </section>
   )

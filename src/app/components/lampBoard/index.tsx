@@ -1,30 +1,29 @@
 'use client'
 import useKeyPress from '@/app/hooks/keyDetect'
-import { MemoLamp, LampSpace } from './lamps'
+import Lamp, { LampSpace } from './lamps'
 import { keys } from './utils'
 import { useBoundStore } from '@/app/stores'
 
 const LampBoard = () => {
   useKeyPress()
-  const { key } = useBoundStore()
   return (
     <div className="flex flex-col items-center gap-1 tablet:gap-2">
       <div className="flex flex-row gap-1 tablet:gap-2">
         {keys[0].map((letter, i) => (
-          <MemoLamp key={i} letter={letter} keyPress={letter === key} />
+          <Lamp key={i} letter={letter} />
         ))}
       </div>
       <div className="flex flex-row gap-1 tablet:gap-2">
         {keys[1].map((letter, i) => (
-          <MemoLamp key={i} letter={letter} keyPress={letter === key} />
+          <Lamp key={i} letter={letter} />
         ))}
       </div>
       <div className="flex flex-row gap-1 tablet:gap-2">
         {keys[2].map((letter, i) => (
-          <MemoLamp key={i} letter={letter} keyPress={letter === key} />
+          <Lamp key={i} letter={letter} />
         ))}
       </div>
-      <LampSpace keyPress={key === ' '} />
+      <LampSpace />
     </div>
   )
 }
