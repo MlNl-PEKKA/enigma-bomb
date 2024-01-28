@@ -1,26 +1,18 @@
-import { useCallback, useEffect, useState } from 'react'
-import { setText, useBoundStore } from '../stores'
+import { useCallback, useEffect } from 'react'
+import { setKey, setText } from '../stores'
+import { Keys } from '../components/lampBoard/utils'
 
 const useKeyPress = () => {
-  const [keyPress, setKeyPress] = useState('')
-  const text = useBoundStore((state) => state.text)
-  const keyValidation = useCallback((key: string) => {
-    return /^[a-z\s]$/i.test(key)
-  }, [])
   const listenerUpFunction = useCallback(() => {
-    setKeyPress('')
+    setKey(null)
   }, [])
-  const listenerDownFunction = useCallback(
-    (e: KeyboardEvent) => {
-      if (keyValidation(e.key)) setText(`${text}${e.key.toLowerCase()}`)
-      else if (e.key === 'Backspace')
-        setText(
-          `${text?.length === 0 ? text : text?.slice(0, text.length - 1)}`
-        )
-      setKeyPress(e.key.toLowerCase())
-    },
-    [keyValidation, text]
-  )
+  const listenerDownFunction = useCallback((e: KeyboardEvent) => {
+    const newKey = e.key.toLowerCase() as Keys
+    if (keyValidation(newKey)) {
+      setKey(newKey)
+      setText(newKey)
+    }
+  }, [])
   useEffect(() => {
     document.addEventListener('keydown', listenerDownFunction)
     return () => {
@@ -34,8 +26,9 @@ const useKeyPress = () => {
       document.removeEventListener('keyup', listenerUpFunction)
     }
   }, [listenerUpFunction])
-
-  return keyPress
 }
 
+export const keyValidation = (key: Keys) => {
+  return key ? /^[a-z\s]$/i.test(key as string) || key === 'backspace' : false
+}
 export default useKeyPress

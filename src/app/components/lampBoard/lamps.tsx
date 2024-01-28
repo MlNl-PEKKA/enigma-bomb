@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react'
-import { TLetters } from './utils'
+import { Keys } from './utils'
 
-const Lamp: React.FC<{ letter: TLetters; keyPress: boolean }> = ({
+const Lamp: React.FC<{ letter: Keys; keyPress: boolean }> = ({
   letter,
   keyPress,
 }) => {
